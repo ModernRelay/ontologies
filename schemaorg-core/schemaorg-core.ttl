@@ -1,0 +1,104 @@
+# A curated subset of schema.org: seven types and the properties that connect them.
+# Source: https://schema.org. Licensed CC BY-SA 3.0 by schema.org.
+# Terms keep their schema.org IRIs; descriptions are shortened. The full vocabulary has
+# ~800 types: see https://schema.org/docs/full.html.
+
+@prefix schema: <https://schema.org/> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+
+schema:Thing a rdfs:Class ;
+    rdfs:label "Thing" ;
+    rdfs:comment "The most generic type of item." .
+
+schema:Person a rdfs:Class ;
+    rdfs:label "Person" ;
+    rdfs:subClassOf schema:Thing ;
+    rdfs:comment "A person (alive, dead, undead, or fictional)." .
+
+schema:Organization a rdfs:Class ;
+    rdfs:label "Organization" ;
+    rdfs:subClassOf schema:Thing ;
+    rdfs:comment "An organization such as a school, NGO, corporation, club, etc." .
+
+schema:Place a rdfs:Class ;
+    rdfs:label "Place" ;
+    rdfs:subClassOf schema:Thing ;
+    rdfs:comment "Entities that have a somewhat fixed, physical extension." .
+
+schema:Event a rdfs:Class ;
+    rdfs:label "Event" ;
+    rdfs:subClassOf schema:Thing ;
+    rdfs:comment "An event happening at a certain time and location." .
+
+schema:CreativeWork a rdfs:Class ;
+    rdfs:label "CreativeWork" ;
+    rdfs:subClassOf schema:Thing ;
+    rdfs:comment "The most generic kind of creative work, including books, movies, photographs, software programs, etc." .
+
+schema:Product a rdfs:Class ;
+    rdfs:label "Product" ;
+    rdfs:subClassOf schema:Thing ;
+    rdfs:comment "Any offered product or service." .
+
+schema:PostalAddress a rdfs:Class ;
+    rdfs:label "PostalAddress" ;
+    rdfs:subClassOf schema:Thing ;
+    rdfs:comment "The mailing address." .
+
+# --- Thing ---
+schema:name a rdf:Property ; schema:domainIncludes schema:Thing ; schema:rangeIncludes schema:Text .
+schema:description a rdf:Property ; schema:domainIncludes schema:Thing ; schema:rangeIncludes schema:Text .
+schema:url a rdf:Property ; schema:domainIncludes schema:Thing ; schema:rangeIncludes schema:URL .
+schema:identifier a rdf:Property ; schema:domainIncludes schema:Thing ; schema:rangeIncludes schema:Text .
+schema:sameAs a rdf:Property ; schema:domainIncludes schema:Thing ; schema:rangeIncludes schema:URL .
+
+# --- Person ---
+schema:givenName a rdf:Property ; schema:domainIncludes schema:Person ; schema:rangeIncludes schema:Text .
+schema:familyName a rdf:Property ; schema:domainIncludes schema:Person ; schema:rangeIncludes schema:Text .
+schema:email a rdf:Property ; schema:domainIncludes schema:Person, schema:Organization ; schema:rangeIncludes schema:Text .
+schema:jobTitle a rdf:Property ; schema:domainIncludes schema:Person ; schema:rangeIncludes schema:Text .
+schema:birthDate a rdf:Property ; schema:domainIncludes schema:Person ; schema:rangeIncludes schema:Date .
+schema:worksFor a rdf:Property ; schema:domainIncludes schema:Person ; schema:rangeIncludes schema:Organization .
+schema:memberOf a rdf:Property ; schema:domainIncludes schema:Person, schema:Organization ; schema:rangeIncludes schema:Organization .
+schema:knows a rdf:Property ; schema:domainIncludes schema:Person ; schema:rangeIncludes schema:Person .
+schema:address a rdf:Property ; schema:domainIncludes schema:Person, schema:Organization, schema:Place ; schema:rangeIncludes schema:PostalAddress .
+
+# --- Organization ---
+schema:legalName a rdf:Property ; schema:domainIncludes schema:Organization ; schema:rangeIncludes schema:Text .
+schema:foundingDate a rdf:Property ; schema:domainIncludes schema:Organization ; schema:rangeIncludes schema:Date .
+schema:parentOrganization a rdf:Property ; schema:domainIncludes schema:Organization ; schema:rangeIncludes schema:Organization .
+schema:employee a rdf:Property ; schema:domainIncludes schema:Organization ; schema:rangeIncludes schema:Person .
+schema:location a rdf:Property ; schema:domainIncludes schema:Organization, schema:Event ; schema:rangeIncludes schema:Place .
+
+# --- Place ---
+schema:containedInPlace a rdf:Property ; schema:domainIncludes schema:Place ; schema:rangeIncludes schema:Place .
+schema:latitude a rdf:Property ; schema:domainIncludes schema:Place ; schema:rangeIncludes schema:Number .
+schema:longitude a rdf:Property ; schema:domainIncludes schema:Place ; schema:rangeIncludes schema:Number .
+
+# --- Event ---
+schema:startDate a rdf:Property ; schema:domainIncludes schema:Event ; schema:rangeIncludes schema:DateTime .
+schema:endDate a rdf:Property ; schema:domainIncludes schema:Event ; schema:rangeIncludes schema:DateTime .
+schema:organizer a rdf:Property ; schema:domainIncludes schema:Event ; schema:rangeIncludes schema:Person, schema:Organization .
+schema:attendee a rdf:Property ; schema:domainIncludes schema:Event ; schema:rangeIncludes schema:Person, schema:Organization .
+schema:eventStatus a rdf:Property ; schema:domainIncludes schema:Event ; schema:rangeIncludes schema:EventStatusType .
+
+# --- CreativeWork ---
+schema:author a rdf:Property ; schema:domainIncludes schema:CreativeWork ; schema:rangeIncludes schema:Person, schema:Organization .
+schema:publisher a rdf:Property ; schema:domainIncludes schema:CreativeWork ; schema:rangeIncludes schema:Person, schema:Organization .
+schema:dateCreated a rdf:Property ; schema:domainIncludes schema:CreativeWork ; schema:rangeIncludes schema:DateTime .
+schema:datePublished a rdf:Property ; schema:domainIncludes schema:CreativeWork ; schema:rangeIncludes schema:DateTime .
+schema:about a rdf:Property ; schema:domainIncludes schema:CreativeWork, schema:Event ; schema:rangeIncludes schema:Thing .
+schema:inLanguage a rdf:Property ; schema:domainIncludes schema:CreativeWork, schema:Event ; schema:rangeIncludes schema:Text .
+
+# --- Product ---
+schema:brand a rdf:Property ; schema:domainIncludes schema:Product ; schema:rangeIncludes schema:Organization .
+schema:manufacturer a rdf:Property ; schema:domainIncludes schema:Product ; schema:rangeIncludes schema:Organization .
+schema:sku a rdf:Property ; schema:domainIncludes schema:Product ; schema:rangeIncludes schema:Text .
+schema:gtin a rdf:Property ; schema:domainIncludes schema:Product ; schema:rangeIncludes schema:Text .
+
+# --- PostalAddress ---
+schema:streetAddress a rdf:Property ; schema:domainIncludes schema:PostalAddress ; schema:rangeIncludes schema:Text .
+schema:addressLocality a rdf:Property ; schema:domainIncludes schema:PostalAddress ; schema:rangeIncludes schema:Text .
+schema:postalCode a rdf:Property ; schema:domainIncludes schema:PostalAddress ; schema:rangeIncludes schema:Text .
+schema:addressCountry a rdf:Property ; schema:domainIncludes schema:PostalAddress ; schema:rangeIncludes schema:Text .

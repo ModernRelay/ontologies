@@ -1,0 +1,56 @@
+// Shared base types for Omnigraph apps: the people, organizations, events and
+// documents most domains mention. Other ontologies build on these names, so apps
+// that install them read and write the same Person and Organization.
+
+interface Named {
+    name: String
+}
+
+node Person @description("A human being. One node per person, whatever systems they appear in.") implements Named {
+    slug: String @key
+    email: String? @unique
+    title: String?
+}
+
+node Organization @description("A company, team, institution or any other group that acts as one.") implements Named {
+    slug: String @key
+    domain: String? @unique
+    kind: enum(company, nonprofit, government, team, other)?
+}
+
+node Event @description("Something that happens at a time: a meeting, a launch, a conference.") implements Named {
+    slug: String @key
+    starts_at: DateTime @index
+    ends_at: DateTime?
+    location: String?
+}
+
+node Document @description("Content with an address: a doc, a page, a file, a thread, an email or a recording.") {
+    slug: String @key
+    title: String @index
+    kind: enum(doc, page, file, thread, email, recording, other)
+    url: String? @unique
+    created_at: DateTime?
+}
+
+edge MemberOf: Person -> Organization {
+    role: String?
+    since: Date?
+    @unique(@src, @dst)
+}
+
+edge PartOf: Organization -> Organization @card(0..1)
+
+edge Attended: Person -> Event {
+    @unique(@src, @dst)
+}
+
+edge OrganizedBy: Event -> Organization @card(0..1)
+
+edge Authored: Person -> Document {
+    @unique(@src, @dst)
+}
+
+edge DocumentAbout: Document -> Event {
+    @unique(@src, @dst)
+}

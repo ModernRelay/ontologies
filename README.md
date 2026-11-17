@@ -16,6 +16,8 @@ npx ontologies.sh add modernrelay/ontologies/<name>
 | [base](base/) | Shared base types for Omnigraph apps | ontologies.sh | MIT |
 | [company-brain](company-brain/) | A company's people, sources, claims, decisions | Omnigraph cookbooks | MIT |
 
+`base` and `company-brain` are written in Omnigraph `.pg` and also ship Cypher (Neo4j 5), a GraphQL schema and Atlas HCL (PostgreSQL) generated from it. Those were applied to Neo4j 5 Enterprise and PostgreSQL 16 before publishing. Each `ONTOLOGY.md` says what the translations lose.
+
 The upstream files are copied unmodified, except `schemaorg-core.ttl`, which is a curated subset. Each ontology keeps its own license; see the `license` and `upstream` fields in its `ONTOLOGY.md`.
 
 The format is described at https://ontologies.sh/docs.

@@ -3,7 +3,8 @@ name: company-brain
 description: The shared context of one company. People and teams, the sources they talk in, the claims made there, and the decisions and action items that follow.
 license: MIT
 entities: [Person, Actor, Team, Project, Source, Claim, Decision, ActionItem]
-formats: [pg]
+formats: [pg, cypher, graphql, hcl]
+canonical: schema.pg
 upstream: https://github.com/ModernRelay/omnigraph-cookbooks/tree/main/company-brain
 tags: [omnigraph, company, decisions, meetings, knowledge-base, agents]
 version: 0.1.0
@@ -90,4 +91,7 @@ flowchart LR
 
 ## Files
 
-- `schema.pg`: the schema from the Omnigraph cookbooks (`company-brain/schema.pg`), unmodified, MIT licensed. Compiles on Omnigraph 0.14.
+- `schema.pg`: **canonical.** The schema from the Omnigraph cookbooks (`company-brain/schema.pg`), unmodified, MIT licensed. Compiles on Omnigraph 0.14 and 0.15. Edit this one.
+- `schema.cypher`: Neo4j 5 constraints and indexes, generated from `schema.pg`. Relationships, their cardinality and enum values are comments; existence and type constraints need Neo4j Enterprise. The `@card` rules that keep reviewed rows from being overwritten are not enforced.
+- `schema.graphql`: a GraphQL schema, generated from `schema.pg`. Edges with properties (MemberOf, LeftTeam, SupersededBy) are `…Edge` types. No keys or uniqueness.
+- `schema.hcl`: Atlas HCL for PostgreSQL, generated from `schema.pg`. Single-target edges are foreign keys, the rest join tables. "At least one" (BasedOn, ActionFrom) can't be expressed in SQL and is left to the application.

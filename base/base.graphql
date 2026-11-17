@@ -1,0 +1,99 @@
+# Generated from base.pg. Edit base.pg and regenerate.
+# GraphQL SDL. Edges become fields in both directions; an edge with properties
+# (MemberOf) becomes its own type. GraphQL has no keys or uniqueness: `slug` is
+# the key, and `email`, `domain` and `url` are unique in base.pg.
+
+scalar Date
+scalar DateTime
+
+"""
+Shared fields of named things.
+"""
+interface Named {
+  name: String!
+}
+
+enum OrganizationKind {
+  company
+  nonprofit
+  government
+  team
+  other
+}
+
+enum DocumentKind {
+  doc
+  page
+  file
+  thread
+  email
+  recording
+  other
+}
+
+"""
+A human being. One node per person, whatever systems they appear in.
+"""
+type Person implements Named {
+  slug: ID!
+  name: String!
+  email: String
+  title: String
+  memberships: [Membership!]!
+  attended: [Event!]!
+  authored: [Document!]!
+}
+
+"""
+A company, team, institution or any other group that acts as one.
+"""
+type Organization implements Named {
+  slug: ID!
+  name: String!
+  domain: String
+  kind: OrganizationKind
+  """
+  At most one parent.
+  """
+  partOf: Organization
+  parts: [Organization!]!
+  memberships: [Membership!]!
+  organizes: [Event!]!
+}
+
+"""
+Person → MemberOf → Organization, with the edge's properties.
+"""
+type Membership {
+  person: Person!
+  organization: Organization!
+  role: String
+  since: Date
+}
+
+"""
+Something that happens at a time: a meeting, a launch, a conference.
+"""
+type Event implements Named {
+  slug: ID!
+  name: String!
+  startsAt: DateTime!
+  endsAt: DateTime
+  location: String
+  organizedBy: Organization
+  attendees: [Person!]!
+  documents: [Document!]!
+}
+
+"""
+Content with an address: a doc, a page, a file, a thread, an email or a recording.
+"""
+type Document {
+  slug: ID!
+  title: String!
+  kind: DocumentKind!
+  url: String
+  createdAt: DateTime
+  authors: [Person!]!
+  about: [Event!]!
+}

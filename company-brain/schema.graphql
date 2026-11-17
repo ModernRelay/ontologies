@@ -1,0 +1,210 @@
+# Generated from schema.pg. Edit schema.pg and regenerate.
+# GraphQL SDL. Edges become fields on the source type and reverse fields on the target.
+# Edges with properties (MemberOf, LeftTeam, SupersededBy) become their own types.
+# GraphQL has no keys or uniqueness: `slug` is the key of every type.
+
+scalar Date
+scalar DateTime
+
+enum ActorKind {
+  human
+  agent
+}
+
+enum ProjectStatus {
+  planned
+  active
+  paused
+  done
+  cancelled
+}
+
+enum SourceKind {
+  meeting
+  thread
+  document
+  email
+  ticket
+  other
+}
+
+enum ClaimKind {
+  fact
+  proposal
+  commitment
+  risk
+}
+
+enum ClaimStatus {
+  unverified
+  verified
+  rejected
+}
+
+enum DecisionStatus {
+  proposed
+  accepted
+  rejected
+  deprecated
+}
+
+enum ActionItemStatus {
+  open
+  in_progress
+  done
+  cancelled
+}
+
+"""
+Someone in the real world. One node per human.
+"""
+type Person {
+  slug: ID!
+  name: String!
+  title: String
+  active: Boolean
+  email: String
+  slack: String
+  github: String
+  memberOf: [MemberOfEdge!]!
+  leftTeam: [LeftTeamEdge!]!
+  actsForReverse: [Actor!]!
+  ownedByReverse: [Project!]!
+  claimedByReverse: [Claim!]!
+  decidedByReverse: [Decision!]!
+  assignedToReverse: [ActionItem!]!
+}
+
+"""
+Someone who reads or writes the graph: a person's login or a software agent.
+"""
+type Actor {
+  slug: ID!
+  kind: ActorKind!
+  name: String!
+  purpose: String
+  active: Boolean
+  actsFor: Person
+}
+
+"""
+An organizational unit. The company itself is the root team.
+"""
+type Team {
+  slug: ID!
+  name: String!
+  partOf: Team
+  memberOfReverse: [MemberOfEdge!]!
+  leftTeamReverse: [LeftTeamEdge!]!
+  runByReverse: [Project!]!
+}
+
+"""
+A time-bound effort with an owner and an outcome.
+"""
+type Project {
+  slug: ID!
+  name: String!
+  status: ProjectStatus!
+  targetDate: Date
+  ownedBy: Person
+  runBy: Team
+  sourceAboutReverse: [Source!]!
+  decisionAboutReverse: [Decision!]!
+  actionAboutReverse: [ActionItem!]!
+}
+
+"""
+A record the brain learned from: a meeting, thread, document, email or ticket.
+"""
+type Source {
+  slug: ID!
+  kind: SourceKind!
+  title: String!
+  url: String
+  occurredAt: DateTime!
+  summary: String
+  sourceAbout: [Project!]!
+  claimFromReverse: [Claim!]!
+}
+
+"""
+One statement someone made in a source, as they made it.
+"""
+type Claim {
+  slug: ID!
+  statement: String!
+  quote: String!
+  locator: String
+  kind: ClaimKind!
+  status: ClaimStatus!
+  recordedAt: DateTime!
+  claimFrom: Source!
+  claimedBy: Person!
+  contradicts: [Claim!]!
+  basedOnReverse: [Decision!]!
+  actionFromReverse: [ActionItem!]!
+}
+
+"""
+A verified decision. Never rewritten: a change is a new Decision.
+"""
+type Decision {
+  slug: ID!
+  title: String!
+  statement: String!
+  rationale: String
+  status: DecisionStatus!
+  decidedAt: DateTime
+  recordedAt: DateTime!
+  basedOn: [Claim!]!
+  decidedBy: [Person!]!
+  decisionAbout: Project!
+  supersededBy: SupersededByEdge
+  followsFromReverse: [ActionItem!]!
+}
+
+"""
+A task that follows from claims or a decision.
+"""
+type ActionItem {
+  slug: ID!
+  title: String!
+  status: ActionItemStatus!
+  due: Date
+  completedAt: DateTime
+  recordedAt: DateTime!
+  assignedTo: Person
+  actionFrom: [Claim!]!
+  followsFrom: Decision
+  actionAbout: Project
+}
+
+"""
+Person → MemberOf → Team, with the edge's properties.
+"""
+type MemberOfEdge {
+  from: Person!
+  to: Team!
+  role: String
+  since: Date!
+}
+
+"""
+Person → LeftTeam → Team, with the edge's properties.
+"""
+type LeftTeamEdge {
+  from: Person!
+  to: Team!
+  since: Date!
+  until: Date!
+}
+
+"""
+Decision → SupersededBy → Decision, with the edge's properties.
+"""
+type SupersededByEdge {
+  from: Decision!
+  to: Decision!
+  reason: String
+}

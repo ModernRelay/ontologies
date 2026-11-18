@@ -1,6 +1,6 @@
 ---
 name: skos
-description: Taxonomies, thesauri and controlled vocabularies from the W3C. Concepts, their labels, broader and narrower links, and mappings between schemes.
+description: "The W3C format for taxonomies and thesauri: concepts, their labels, broader and narrower links, and mappings to other schemes."
 license: W3C-20150513
 entities: [Concept, ConceptScheme, Collection, OrderedCollection]
 formats: [rdf]

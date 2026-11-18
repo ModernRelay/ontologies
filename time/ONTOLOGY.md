@@ -1,6 +1,6 @@
 ---
 name: time
-description: Time from the W3C and OGC. Instants, intervals and durations, how they order against each other, and how a position in time is written down.
+description: "OWL-Time from the W3C and OGC: instants, intervals and durations, and how they relate (before, after, during and the rest of Allen's relations)."
 license: CC-BY-4.0
 entities: [TemporalEntity, Instant, Interval, ProperInterval, Duration, DateTimeDescription, TemporalUnit, TRS]
 formats: [ttl]

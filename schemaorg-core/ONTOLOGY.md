@@ -1,6 +1,6 @@
 ---
 name: schemaorg-core
-description: The common ground of the web. People, organizations, places, events, creative works and products, from schema.org.
+description: Six core types from schema.org (Person, Organization, Place, Event, CreativeWork and Product) and their main properties.
 license: CC-BY-SA-3.0
 entities: [Person, Organization, Place, Event, CreativeWork, Product, PostalAddress]
 formats: [ttl]

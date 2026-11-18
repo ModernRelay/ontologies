@@ -1,6 +1,6 @@
 ---
 name: foaf
-description: Friend of a Friend. People, organizations and groups, the documents and images about them, their online accounts, and who knows whom.
+description: "FOAF (Friend of a Friend): people, groups and organizations, their online accounts, the documents about them, and who knows whom. Around since 2000."
 license: CC-BY-1.0
 entities: [Agent, Person, Organization, Group, Document, Image, OnlineAccount, Project]
 formats: [rdf]

@@ -1,6 +1,6 @@
 ---
 name: base
-description: Shared base types for Omnigraph apps. People, organizations, events and documents, so every app on one store means the same Person.
+description: Person, Organization, Event and Document for Omnigraph apps. Start every app on one store from these four, so they all mean the same thing by Person.
 license: MIT
 entities: [Person, Organization, Event, Document]
 formats: [pg, cypher, graphql, hcl]

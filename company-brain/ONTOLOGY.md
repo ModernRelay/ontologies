@@ -1,6 +1,6 @@
 ---
 name: company-brain
-description: The shared context of one company. People and teams, the sources they talk in, the claims made there, and the decisions and action items that follow.
+description: Who said what in which meeting or thread, which claims turned into decisions, and the action items that came out of them. From the Omnigraph cookbooks.
 license: MIT
 entities: [Person, Actor, Team, Project, Source, Claim, Decision, ActionItem]
 formats: [pg, cypher, graphql, hcl]

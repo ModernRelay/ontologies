@@ -41,7 +41,7 @@ flowchart LR
   classDef agent fill:#e8f0fe,stroke:#4a6fd1,color:#1d1d1f
   classDef doc fill:#e7f6ec,stroke:#3c9a5f,color:#1d1d1f
   Agent["<b>Agent</b>"]:::agent
-  Person["<b>Person</b><br/><small>↻ knows</small>"]:::agent
+  Person["<b>Person</b>"]:::agent
   Organization["<b>Organization</b>"]:::agent
   Group["<b>Group</b>"]:::agent
   OnlineAccount["<b>OnlineAccount</b>"]
@@ -57,6 +57,7 @@ flowchart LR
   Agent -->|"account"| OnlineAccount
   Image -->|"depicts"| Person
   Person -->|"current project"| Project
+  Person -->|"knows"| Person
 ```
 
 ## Modeling decisions

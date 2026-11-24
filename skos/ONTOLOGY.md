@@ -34,14 +34,19 @@ Controlled vocabularies: tag sets, category trees, thesauri, classification sche
 ```mermaid
 flowchart LR
   classDef concept fill:#f3e8fd,stroke:#8a4fd1,color:#1d1d1f
-  Concept["<b>Concept</b><br/><small>↻ broader, narrower, related</small><br/><small>↻ exact / close match</small>"]:::concept
+  Concept["<b>Concept</b>"]:::concept
   ConceptScheme["<b>ConceptScheme</b>"]
-  Collection["<b>Collection</b><br/><small>↻ member</small>"]
+  Collection["<b>Collection</b>"]
   OrderedCollection["<b>OrderedCollection</b>"]
   Concept -->|"in scheme"| ConceptScheme
   ConceptScheme -->|"has top concept"| Concept
   Collection -->|"member"| Concept
   OrderedCollection -.->|"is a"| Collection
+  Concept -->|"broader"| Concept
+  Concept -->|"narrower"| Concept
+  Concept -->|"related"| Concept
+  Concept -->|"exact / close match"| Concept
+  Collection -->|"member"| Collection
 ```
 
 ## Modeling decisions

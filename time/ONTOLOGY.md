@@ -38,10 +38,10 @@ Time as things you can point at. An **Instant** is a point; an **Interval** has 
 ```mermaid
 flowchart LR
   classDef time fill:#e7f6ec,stroke:#3c9a5f,color:#1d1d1f
-  TemporalEntity["<b>TemporalEntity</b><br/><small>↻ before, after</small>"]:::time
+  TemporalEntity["<b>TemporalEntity</b>"]:::time
   Instant["<b>Instant</b>"]:::time
   Interval["<b>Interval</b>"]:::time
-  ProperInterval["<b>ProperInterval</b><br/><small>↻ Allen relations</small>"]:::time
+  ProperInterval["<b>ProperInterval</b>"]:::time
   Duration["<b>Duration</b>"]
   DateTimeDescription["<b>DateTimeDescription</b>"]
   TemporalUnit["<b>TemporalUnit</b>"]
@@ -54,6 +54,9 @@ flowchart LR
   Instant -->|"in date time"| DateTimeDescription
   Duration -->|"unit type"| TemporalUnit
   DateTimeDescription -->|"has TRS"| TRS
+  TemporalEntity -->|"before"| TemporalEntity
+  TemporalEntity -->|"after"| TemporalEntity
+  ProperInterval -->|"Allen relations"| ProperInterval
 ```
 
 ## Modeling decisions

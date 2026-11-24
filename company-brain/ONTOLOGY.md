@@ -48,14 +48,14 @@ flowchart LR
   classDef L0 fill:#e8f0fe,stroke:#4a6fd1,color:#1d1d1f,stroke-width:1.5px
   Person["<b>Person</b>"]:::L0
   Actor["<b>Actor</b>"]:::L0
-  Team["<b>Team</b><br/><small>↻ part of</small>"]:::L0
+  Team["<b>Team</b>"]:::L0
   Project["<b>Project</b>"]:::L0
   classDef L1 fill:#e7f6ec,stroke:#3c9a5f,color:#1d1d1f,stroke-width:1.5px
   Source["<b>Source</b>"]:::L1
   classDef L2 fill:#f3e8fd,stroke:#8a4fd1,color:#1d1d1f,stroke-width:1.5px
-  Claim["<b>Claim</b><br/><small>↻ contradicts</small>"]:::L2
+  Claim["<b>Claim</b>"]:::L2
   classDef L3 fill:#fdf0e2,stroke:#d08a2b,color:#1d1d1f,stroke-width:1.5px
-  Decision["<b>Decision</b><br/><small>↻ superseded by</small>"]:::L3
+  Decision["<b>Decision</b>"]:::L3
   ActionItem["<b>ActionItem</b>"]:::L3
   Person -->|"member of"| Team
   Person -->|"left"| Team
@@ -72,6 +72,9 @@ flowchart LR
   ActionItem -->|"follows from"| Decision
   ActionItem -->|"assigned to"| Person
   ActionItem -->|"about"| Project
+  Team -->|"part of"| Team
+  Claim -->|"contradicts"| Claim
+  Decision -->|"superseded by"| Decision
 ```
 
 ## Modeling decisions

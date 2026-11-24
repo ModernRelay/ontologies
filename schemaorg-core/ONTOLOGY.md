@@ -48,9 +48,9 @@ flowchart LR
   classDef who fill:#e8f0fe,stroke:#4a6fd1,color:#1d1d1f
   classDef where fill:#e7f6ec,stroke:#3c9a5f,color:#1d1d1f
   classDef what fill:#fdf0e2,stroke:#d08a2b,color:#1d1d1f
-  Person["<b>Person</b><br/><small>↻ knows</small>"]:::who
-  Organization["<b>Organization</b><br/><small>↻ parent organization</small>"]:::who
-  Place["<b>Place</b><br/><small>↻ contained in place</small>"]:::where
+  Person["<b>Person</b>"]:::who
+  Organization["<b>Organization</b>"]:::who
+  Place["<b>Place</b>"]:::where
   PostalAddress["<b>PostalAddress</b>"]:::where
   Event["<b>Event</b>"]:::what
   CreativeWork["<b>CreativeWork</b>"]:::what
@@ -65,6 +65,9 @@ flowchart LR
   Product -->|"brand, manufacturer"| Organization
   Person -->|"address"| PostalAddress
   Organization -->|"address"| PostalAddress
+  Person -->|"knows"| Person
+  Organization -->|"parent organization"| Organization
+  Place -->|"contained in place"| Place
 ```
 
 ## Modeling decisions

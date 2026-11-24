@@ -38,9 +38,9 @@ PROV-O also has *qualified* forms (Usage, Generation, Association, Derivation, �
 ```mermaid
 flowchart LR
   classDef core fill:#fdf0e2,stroke:#d08a2b,color:#1d1d1f
-  Entity["<b>Entity</b><br/><small>↻ was derived from</small>"]:::core
-  Activity["<b>Activity</b><br/><small>↻ was informed by</small>"]:::core
-  Agent["<b>Agent</b><br/><small>↻ acted on behalf of</small>"]:::core
+  Entity["<b>Entity</b>"]:::core
+  Activity["<b>Activity</b>"]:::core
+  Agent["<b>Agent</b>"]:::core
   Plan["<b>Plan</b>"]
   Person["<b>Person</b>"]
   Organization["<b>Organization</b>"]
@@ -53,6 +53,9 @@ flowchart LR
   Person -.->|"is an"| Agent
   Organization -.->|"is an"| Agent
   SoftwareAgent -.->|"is an"| Agent
+  Entity -->|"was derived from"| Entity
+  Activity -->|"was informed by"| Activity
+  Agent -->|"acted on behalf of"| Agent
 ```
 
 ## Modeling decisions

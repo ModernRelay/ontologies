@@ -38,7 +38,7 @@ flowchart LR
   classDef who fill:#e8f0fe,stroke:#4a6fd1,color:#1d1d1f
   classDef what fill:#fdf0e2,stroke:#d08a2b,color:#1d1d1f
   Person["<b>Person</b>"]:::who
-  Organization["<b>Organization</b><br/><small>↻ part of</small>"]:::who
+  Organization["<b>Organization</b>"]:::who
   Event["<b>Event</b>"]:::what
   Document["<b>Document</b>"]:::what
   Person -->|"member of (role, since)"| Organization
@@ -46,6 +46,7 @@ flowchart LR
   Event -->|"organized by (0..1)"| Organization
   Person -->|"authored"| Document
   Document -->|"about"| Event
+  Organization -->|"part of"| Organization
 ```
 
 ## Modeling decisions

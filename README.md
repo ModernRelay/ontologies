@@ -1,6 +1,6 @@
 # ontologies
 
-Starter ontologies for [ontology.sh](https://ontology.sh). Each folder holds one ontology: an `ONTOLOGY.md` and its source files.
+Starter ontologies for [ontology.sh](https://ontology.sh). Each folder holds one ontology: an `ONTOLOGY.md`, its source files, and an `index.md` that makes the folder an [Open Knowledge Format](https://github.com/open-knowledge-format/open-knowledge-format) v0.3 bundle.
 
 ```bash
 npx ontology.sh add modernrelay/ontologies/<name>
@@ -18,6 +18,6 @@ npx ontology.sh add modernrelay/ontologies/<name>
 
 `base` and `company-brain` are written in Omnigraph `.pg` and also ship Cypher (Neo4j 5), a GraphQL schema and Atlas HCL (PostgreSQL) generated from it. Those were applied to Neo4j 5 Enterprise and PostgreSQL 16 before publishing. Each `ONTOLOGY.md` says what the translations lose.
 
-The upstream files are copied unmodified, except `schemaorg-core.ttl`, which is a curated subset. Each ontology keeps its own license; see the `license` and `upstream` fields in its `ONTOLOGY.md`.
+The upstream files are copied unmodified, except `schemaorg-core.ttl`, which is a curated subset. Each ontology keeps its own license; see the `license` and `sources` fields in its `ONTOLOGY.md`. `generated` says who wrote the current text; none of them carries a `verified` sign-off yet.
 
 The format is described at https://ontology.sh/docs.

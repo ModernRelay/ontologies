@@ -1,12 +1,15 @@
 ---
+type: Ontology
 name: base
+title: Base
 description: Person, Organization, Event and Document for Omnigraph apps. Start every app on one store from these four, so they all mean the same thing by Person.
 license: MIT
 entities: [Person, Organization, Event, Document]
 formats: [pg, cypher, graphql, hcl]
 canonical: base.pg
 tags: [omnigraph, base, people, organizations, events, documents]
-version: 0.1.0
+version: "0.1.0"
+generated: { by: claude-code/claude-opus-5-5, at: "2026-11-24T11:09:13+01:00" }
 ---
 
 # base

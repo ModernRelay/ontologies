@@ -1,13 +1,18 @@
 ---
+type: Ontology
 name: company-brain
+title: Company brain
 description: Who said what in which meeting or thread, which claims turned into decisions, and the action items that came out of them. From the Omnigraph cookbooks.
 license: MIT
 entities: [Person, Actor, Team, Project, Source, Claim, Decision, ActionItem]
 formats: [pg, cypher, graphql, hcl]
 canonical: schema.pg
-upstream: https://github.com/ModernRelay/omnigraph-cookbooks/tree/main/company-brain
+sources:
+  - resource: https://github.com/ModernRelay/omnigraph-cookbooks/tree/main/company-brain
+    title: "Omnigraph cookbooks: company-brain"
 tags: [omnigraph, company, decisions, meetings, knowledge-base, agents]
-version: 0.1.0
+version: "0.1.0"
+generated: { by: claude-code/claude-opus-5-5, at: "2026-11-24T11:09:13+01:00" }
 ---
 
 # Company brain

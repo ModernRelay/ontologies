@@ -1,12 +1,18 @@
 ---
+type: Ontology
 name: time
+title: OWL-Time
 description: "OWL-Time from the W3C and OGC: instants, intervals and durations, and how they relate (before, after, during and the rest of Allen's relations)."
 license: CC-BY-4.0
 entities: [TemporalEntity, Instant, Interval, ProperInterval, Duration, DateTimeDescription, TemporalUnit, TRS]
 formats: [ttl]
-upstream: https://www.w3.org/TR/owl-time/
+resource: "http://www.w3.org/2006/time#"
+sources:
+  - resource: https://www.w3.org/TR/owl-time/
+    title: Time Ontology in OWL, W3C and OGC Recommendation
 tags: [time, temporal, intervals, w3c, ogc]
-version: 0.1.0
+version: "0.1.0"
+generated: { by: claude-code/claude-opus-5-5, at: "2026-11-24T11:09:13+01:00" }
 ---
 
 # OWL-Time

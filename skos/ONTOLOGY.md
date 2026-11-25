@@ -1,12 +1,18 @@
 ---
+type: Ontology
 name: skos
+title: SKOS
 description: "The W3C format for taxonomies and thesauri: concepts, their labels, broader and narrower links, and mappings to other schemes."
 license: W3C-20150513
 entities: [Concept, ConceptScheme, Collection, OrderedCollection]
 formats: [rdf]
-upstream: https://www.w3.org/TR/skos-reference/
+resource: "http://www.w3.org/2004/02/skos/core#"
+sources:
+  - resource: https://www.w3.org/TR/skos-reference/
+    title: SKOS Reference, W3C Recommendation
 tags: [taxonomy, thesaurus, vocabulary, w3c, classification]
-version: 0.1.0
+version: "0.1.0"
+generated: { by: claude-code/claude-opus-5-5, at: "2026-11-24T11:09:13+01:00" }
 ---
 
 # SKOS

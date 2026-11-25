@@ -1,12 +1,18 @@
 ---
+type: Ontology
 name: schemaorg-core
+title: schema.org core
 description: Six core types from schema.org (Person, Organization, Place, Event, CreativeWork and Product) and their main properties.
 license: CC-BY-SA-3.0
 entities: [Person, Organization, Place, Event, CreativeWork, Product, PostalAddress]
 formats: [ttl]
-upstream: https://schema.org
+resource: "https://schema.org/"
+sources:
+  - resource: https://schema.org
+    title: schema.org
 tags: [schema-org, web, people, organizations, events]
-version: 0.1.0
+version: "0.1.0"
+generated: { by: claude-code/claude-opus-5-5, at: "2026-11-24T11:09:13+01:00" }
 ---
 
 # schema.org core

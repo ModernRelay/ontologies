@@ -1,12 +1,18 @@
 ---
+type: Ontology
 name: prov-o
+title: PROV-O
 description: "The W3C vocabulary for where data came from: which activity produced an entity, what it used along the way, and which agent was responsible."
 license: W3C-20150513
 entities: [Entity, Activity, Agent, Person, Organization, SoftwareAgent, Plan]
 formats: [ttl]
-upstream: https://www.w3.org/TR/prov-o/
+resource: "http://www.w3.org/ns/prov#"
+sources:
+  - resource: https://www.w3.org/TR/prov-o/
+    title: PROV-O, W3C Recommendation
 tags: [provenance, w3c, lineage, audit]
-version: 0.1.0
+version: "0.1.0"
+generated: { by: claude-code/claude-opus-5-5, at: "2026-11-24T11:09:13+01:00" }
 ---
 
 # PROV-O

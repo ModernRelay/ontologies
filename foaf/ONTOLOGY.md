@@ -1,12 +1,18 @@
 ---
+type: Ontology
 name: foaf
+title: FOAF
 description: "FOAF (Friend of a Friend): people, groups and organizations, their online accounts, the documents about them, and who knows whom. Around since 2000."
 license: CC-BY-1.0
 entities: [Agent, Person, Organization, Group, Document, Image, OnlineAccount, Project]
 formats: [rdf]
-upstream: http://xmlns.com/foaf/spec/
+resource: "http://xmlns.com/foaf/0.1/"
+sources:
+  - resource: http://xmlns.com/foaf/spec/
+    title: FOAF Vocabulary Specification 0.99
 tags: [people, social, linked-data, identity]
 version: "0.99"
+generated: { by: claude-code/claude-opus-5-5, at: "2026-11-24T11:09:13+01:00" }
 ---
 
 # FOAF
